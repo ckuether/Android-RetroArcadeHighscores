@@ -1,13 +1,20 @@
 package com.example.retroarcadehighscores
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.retroarcadehighscores.databinding.FragmentGamesBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class GamesFragment: Fragment(R.layout.fragment_games) {
 
     lateinit var binding: FragmentGamesBinding
+    var gamesAdapter: GamesRVAdapter? = null
+
+    var games = arrayListOf<Game>()
+
 
     companion object{
         fun newInstance(): GamesFragment{
@@ -19,5 +26,23 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentGamesBinding.bind(view)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if(gamesAdapter == null) {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("games").orderBy("id").get().addOnSuccessListener {
+                games = arrayListOf()
+                for (doc in it.documents) {
+                    val game = doc.toObject(Game::class.java)!!
+                    games.add(game)
+                }
+                gamesAdapter = GamesRVAdapter(context, games)
+                binding.gamesRv.layoutManager = LinearLayoutManager(context)
+                binding.gamesRv.adapter = gamesAdapter
+            }
+        }
     }
 }

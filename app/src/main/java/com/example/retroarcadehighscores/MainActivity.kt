@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.example.retroarcadehighscores.databinding.ActivityMainBinding
-import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    var gamesFrag = GamesFragment.newInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +26,15 @@ class MainActivity : AppCompatActivity() {
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         }
 
-        val db = FirebaseFirestore.getInstance()
-        db.collection("games").orderBy("id").get().addOnSuccessListener {
-            val games = arrayListOf<Game>()
-            for(doc in it.documents){
-                val game = doc.toObject(Game::class.java)!!
-                games.add(game)
-            }
-            val test = games
-            val test2 = "TEST"
+        attachGamesFrag()
+    }
+
+    private fun attachGamesFrag(){
+        val ft = supportFragmentManager.beginTransaction()
+        if(resources.getBoolean(R.bool.isTablet)){
+            ft.replace(binding.gamesCont!!.id, gamesFrag).commit()
+        }else{
+            ft.replace(binding.container!!.id, gamesFrag).commit()
         }
     }
 }
