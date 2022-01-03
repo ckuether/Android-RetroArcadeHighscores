@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.example.retroarcadehighscores.databinding.ActivityMainBinding
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,17 @@ class MainActivity : AppCompatActivity() {
 
         if(resources.getBoolean(R.bool.isTablet)){
             requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+        }
+
+        val db = FirebaseFirestore.getInstance()
+        db.collection("games").orderBy("id").get().addOnSuccessListener {
+            val games = arrayListOf<Game>()
+            for(doc in it.documents){
+                val game = doc.toObject(Game::class.java)!!
+                games.add(game)
+            }
+            val test = games
+            val test2 = "TEST"
         }
     }
 }
