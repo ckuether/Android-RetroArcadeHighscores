@@ -14,8 +14,16 @@ class GamesRVAdapter(val mContext: Context, val games: ArrayList<Game>): Recycle
 
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = games[position]
+        var gameId = (game.id+1).toString()
+        while(gameId.length < 3){
+            gameId = "0$gameId"
+        }
 
+        holder.b.id.text = gameId
         holder.b.name.text = game.name
+        holder.b.container.setOnClickListener {
+            (mContext as MainActivity).updateSelectedGame(game)
+        }
     }
 
     override fun getItemCount(): Int {

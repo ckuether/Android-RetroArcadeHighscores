@@ -15,7 +15,6 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
 
     var games = arrayListOf<Game>()
 
-
     companion object{
         fun newInstance(): GamesFragment{
             val frag = GamesFragment()
@@ -42,6 +41,7 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
                 gamesAdapter = GamesRVAdapter(context, games)
                 binding.gamesRv.layoutManager = LinearLayoutManager(context)
                 binding.gamesRv.adapter = gamesAdapter
+                (context as MainActivity).updateSelectedGame(games[0])
             }
         }
     }
