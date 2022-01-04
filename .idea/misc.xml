@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/fragment_highscores.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.14488348530901723" />
         <entry key="app/src/main/res/layout/view_holder_game.xml" value="0.1503623188405797" />
+        <entry key="app/src/main/res/layout/view_holder_highscores.xml" value="0.1503623188405797" />
       </map>
     </option>
   </component>

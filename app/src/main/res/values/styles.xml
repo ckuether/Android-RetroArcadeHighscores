@@ -5,4 +5,11 @@
         <item name="android:textColorSecondary">@color/text_color</item>
         <item name="actionMenuTextColor">@color/text_color</item>
     </style>
+
+    <style name="FAB">
+        <item name="android:layout_margin">0dp</item>
+        <item name="fabSize">normal</item>
+        <item name="rippleColor">@android:color/white</item>
+        <item name="android:background">@color/color_secondary</item>
+    </style>
 </resources>
