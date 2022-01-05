@@ -69,7 +69,8 @@
                 android:inputType="textCapCharacters"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/grey_text"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:maxLength="3"/>
         </LinearLayout>
     </LinearLayout>
 

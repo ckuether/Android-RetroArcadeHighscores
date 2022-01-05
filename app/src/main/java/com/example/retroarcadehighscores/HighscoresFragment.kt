@@ -26,7 +26,7 @@ class HighscoresFragment(var selectedGame: Game? = null): Fragment(R.layout.frag
 
         binding.gameName.text = selectedGame?.name
         binding.highscoreFab.setOnClickListener {
-            val dialogFrag = HighscoreInputDialog()
+            val dialogFrag = HighscoreInputDialog(selectedGame!!)
             dialogFrag.show(requireActivity().supportFragmentManager, "highscores_input")
         }
     }
