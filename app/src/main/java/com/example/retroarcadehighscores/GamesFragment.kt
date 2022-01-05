@@ -12,7 +12,7 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
 
     lateinit var binding: FragmentGamesBinding
     var gamesAdapter: GamesRVAdapter? = null
-
+    lateinit var mContext: Context
     var games = arrayListOf<Game>()
 
     companion object{
@@ -25,6 +25,7 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentGamesBinding.bind(view)
+        mContext = requireContext()
     }
 
     override fun onResume() {
@@ -37,7 +38,7 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
                     val game = doc.toObject(Game::class.java)!!
                     games.add(game)
                 }
-                gamesAdapter = GamesRVAdapter(requireContext(), games)
+                gamesAdapter = GamesRVAdapter(mContext, games)
                 updateViews()
             }
         }else{
@@ -48,7 +49,7 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
     fun updateViews(){
         binding.gamesRv.layoutManager = LinearLayoutManager(context)
         binding.gamesRv.adapter = gamesAdapter
-        if(resources.getBoolean(R.bool.isTablet)) {
+        if(context != null && (context as MainActivity).isTablet) {
             (context as MainActivity).updateSelectedGame(games[0])
         }
     }

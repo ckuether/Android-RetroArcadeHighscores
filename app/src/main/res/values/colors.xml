@@ -17,4 +17,6 @@
     <color name="grey_242">#242424</color>
     <color name="grey_c77">#6C6C77</color>
     <color name="invisible">#00ffffff</color>
+
+    <color name="pac_man_yellow">#FFFF00</color>
 </resources>
