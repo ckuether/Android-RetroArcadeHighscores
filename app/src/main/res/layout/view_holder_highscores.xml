@@ -17,7 +17,25 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:textColor="@color/text_color"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginRight="16dp"/>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/text_color"
+            android:textStyle="bold"
+            android:layout_marginRight="16dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/initials"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textColor="@color/text_color"
+            android:textStyle="bold"
+            android:layout_marginRight="16dp"/>
     </LinearLayout>
 </LinearLayout>
