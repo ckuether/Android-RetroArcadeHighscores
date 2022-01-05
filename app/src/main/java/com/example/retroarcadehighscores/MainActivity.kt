@@ -36,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         attachGamesFrag()
     }
 
+    fun updateHighscores(){
+        highscoresFrag.updateHighscoresAdapter()
+    }
+
     fun updateSelectedGame(game: Game){
         selectedGame = game
         highscoresFrag.updateGame(game)

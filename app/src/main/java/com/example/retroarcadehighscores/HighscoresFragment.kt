@@ -1,6 +1,5 @@
 package com.example.retroarcadehighscores
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -26,6 +25,10 @@ class HighscoresFragment(var selectedGame: Game? = null): Fragment(R.layout.frag
         binding.highscoresRv.layoutManager = LinearLayoutManager(context)
         highscoresAdapter = HighscoresRVAdapter(requireContext(), selectedGame)
         binding.highscoresRv.adapter = highscoresAdapter
+    }
+
+    fun updateHighscoresAdapter(){
+        highscoresAdapter.notifyDataSetChanged()
     }
 
     fun updateGame(game: Game){

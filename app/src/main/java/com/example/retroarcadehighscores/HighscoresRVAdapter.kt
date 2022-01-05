@@ -18,6 +18,11 @@ class HighscoresRVAdapter(val mContext: Context, var game: Game?): RecyclerView.
         holder.b.position.text = (position+1).toString()
         holder.b.score.text = highscore.score.toString()
         holder.b.initials.text = highscore.initials
+
+        holder.b.container.setOnClickListener {
+            val dialogFrag = HighscoreInputDialog(game!!, position)
+            dialogFrag.show((mContext as MainActivity).supportFragmentManager, "highscores_input")
+        }
     }
 
     override fun getItemCount(): Int {

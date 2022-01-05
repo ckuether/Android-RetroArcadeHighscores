@@ -18,16 +18,13 @@ class HighscoreInputDialog(val game: Game, val highscorePos: Int = -1): DialogFr
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         binding = DialogHighscoreInputBinding.inflate(LayoutInflater.from(context))
 
-        val builder = AlertDialog.Builder(activity)
-        builder.setView(binding.root)
-
-        return builder.create()
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
         binding.gameName.text = game.name
+
+        if(highscorePos != -1) {
+            val highscore = game.highscores[highscorePos]
+            binding.scoreInput.setText(highscore.score.toString())
+            binding.initialsInput.setText(highscore.initials)
+        }
 
         binding.cancelBtn.setOnClickListener {
             dismiss()
@@ -51,8 +48,14 @@ class HighscoreInputDialog(val game: Game, val highscorePos: Int = -1): DialogFr
             game.highscores = highscores
             val db = FirebaseFirestore.getInstance()
             db.document("games/${game.id}").set(game)
+            (activity as MainActivity).updateHighscores()
             dismiss()
         }
+
+        val builder = AlertDialog.Builder(activity)
+        builder.setView(binding.root)
+
+        return builder.create()
     }
 }
 
