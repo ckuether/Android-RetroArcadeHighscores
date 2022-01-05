@@ -41,7 +41,9 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
                 gamesAdapter = GamesRVAdapter(context, games)
                 binding.gamesRv.layoutManager = LinearLayoutManager(context)
                 binding.gamesRv.adapter = gamesAdapter
-                (context as MainActivity).updateSelectedGame(games[0])
+                if(resources.getBoolean(R.bool.isTablet)) {
+                    (context as MainActivity).updateSelectedGame(games[0])
+                }
             }
         }
     }

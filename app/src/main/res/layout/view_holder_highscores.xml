@@ -3,50 +3,43 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:weightSum="5"
     android:gravity="center"
+    android:orientation="horizontal"
     android:paddingTop="16dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="16dp"
+    android:weightSum="10">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/position"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/text_color"
+        android:textSize="26sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/score"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:weightSum="10">
+        android:textColor="@color/text_color"
+        android:textSize="26sp"
+        android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/position"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="26sp"
-            android:textColor="@color/text_color"
-            android:layout_weight="1"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/initials"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:textColor="@color/text_color"
+        android:textSize="26sp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/score"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="26sp"
-            android:textColor="@color/text_color"
-            android:textStyle="bold"
-            android:layout_weight="3"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/initials"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="26sp"
-            android:textColor="@color/text_color"
-            android:layout_weight="3"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/timestamp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="12/12/2022"
-            android:textSize="16sp"
-            android:textColor="@color/grey_text"
-            android:layout_weight="3"/>
-    </LinearLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/timestamp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="12/12/2022"
+        android:textColor="@color/grey_text"
+        android:textSize="16sp" />
 </LinearLayout>

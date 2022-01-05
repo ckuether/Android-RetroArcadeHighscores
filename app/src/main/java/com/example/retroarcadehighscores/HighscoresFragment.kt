@@ -12,8 +12,8 @@ class HighscoresFragment(var selectedGame: Game? = null): Fragment(R.layout.frag
     lateinit var highscoresAdapter: HighscoresRVAdapter
 
     companion object{
-        fun newInstance(): HighscoresFragment{
-            val frag = HighscoresFragment()
+        fun newInstance(game: Game?): HighscoresFragment{
+            val frag = HighscoresFragment(game)
             return frag
         }
     }
@@ -25,6 +25,10 @@ class HighscoresFragment(var selectedGame: Game? = null): Fragment(R.layout.frag
         binding.highscoresRv.layoutManager = LinearLayoutManager(context)
         highscoresAdapter = HighscoresRVAdapter(requireContext(), selectedGame)
         binding.highscoresRv.adapter = highscoresAdapter
+
+        if(!resources.getBoolean(R.bool.isTablet)) {
+            updateGame(selectedGame!!)
+        }
     }
 
     fun updateHighscoresAdapter(){

@@ -10,7 +10,6 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     var gamesFrag = GamesFragment.newInstance()
-    val highscoresFrag = HighscoresFragment.newInstance()
 
     var isTablet = false
 
@@ -37,12 +36,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun updateHighscores(){
+        val highscoresFrag = if(isTablet) {
+            supportFragmentManager.findFragmentById(binding.highscoresCont!!.id) as HighscoresFragment
+        }else{
+            supportFragmentManager.findFragmentById(binding.container!!.id) as HighscoresFragment
+        }
         highscoresFrag.updateHighscoresAdapter()
     }
 
     fun updateSelectedGame(game: Game){
         selectedGame = game
-        highscoresFrag.updateGame(game)
+        if(isTablet) {
+            val highscoresFrag = supportFragmentManager.findFragmentById(binding.highscoresCont!!.id) as HighscoresFragment
+            highscoresFrag.updateGame(game)
+        }else{
+            attachHighscoresFrag()
+        }
     }
 
     private fun attachGamesFrag(){
@@ -56,6 +65,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun attachHighscoresFrag(){
         val ft = supportFragmentManager.beginTransaction()
+        val highscoresFrag = HighscoresFragment.newInstance(selectedGame)
         if(isTablet){
             ft.replace(binding.highscoresCont!!.id, highscoresFrag).commit()
         }else{
