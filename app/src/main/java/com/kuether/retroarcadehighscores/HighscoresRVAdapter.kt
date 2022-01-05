@@ -1,10 +1,10 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.retroarcadehighscores.databinding.ViewHolderHighscoresBinding
+import com.kuether.retroarcadehighscores.databinding.ViewHolderHighscoresBinding
 
 class HighscoresRVAdapter(val mContext: Context, var game: Game?): RecyclerView.Adapter<HighscoresViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HighscoresViewHolder {

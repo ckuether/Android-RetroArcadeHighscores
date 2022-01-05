@@ -1,4 +1,4 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

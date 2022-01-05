@@ -1,11 +1,11 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.retroarcadehighscores.databinding.FragmentGamesBinding
+import com.kuether.retroarcadehighscores.databinding.FragmentGamesBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GamesFragment: Fragment(R.layout.fragment_games) {

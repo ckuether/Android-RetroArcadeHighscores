@@ -1,4 +1,4 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import com.google.firebase.Timestamp
 

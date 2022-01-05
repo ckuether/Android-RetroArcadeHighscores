@@ -1,4 +1,4 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 class Game {
     var id: Int = -1

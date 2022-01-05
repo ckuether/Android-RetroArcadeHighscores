@@ -1,10 +1,10 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.content.ContextCompat
-import com.example.retroarcadehighscores.databinding.ActivityMainBinding
+import com.kuether.retroarcadehighscores.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

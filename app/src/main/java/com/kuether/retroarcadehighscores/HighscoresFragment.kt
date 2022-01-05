@@ -1,10 +1,10 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.retroarcadehighscores.databinding.FragmentHighscoresBinding
+import com.kuether.retroarcadehighscores.databinding.FragmentHighscoresBinding
 
 class HighscoresFragment(var selectedGame: Game? = null): Fragment(R.layout.fragment_highscores) {
 

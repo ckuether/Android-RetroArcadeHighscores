@@ -1,12 +1,11 @@
-package com.example.retroarcadehighscores
+package com.kuether.retroarcadehighscores
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.fragment.app.DialogFragment
-import com.example.retroarcadehighscores.databinding.DialogHighscoreInputBinding
+import com.kuether.retroarcadehighscores.databinding.DialogHighscoreInputBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.*
 import kotlin.Comparator
