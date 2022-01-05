@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding.toolbar.toolbar.title = "Retro Arcade Scoreboard"
         binding.toolbar.toolbar.navigationIcon = ContextCompat.getDrawable(this, R.drawable.ic_arrow_back)
         binding.toolbar.toolbar.setNavigationOnClickListener {
-            super.onBackPressed()
+            onBackPressed()
         }
 
         if(isTablet){
@@ -71,5 +71,13 @@ class MainActivity : AppCompatActivity() {
         }else{
             ft.replace(binding.container!!.id, highscoresFrag).commit()
         }
+    }
+
+    override fun onBackPressed() {
+        if(!isTablet && supportFragmentManager.findFragmentById(binding.container!!.id) is HighscoresFragment){
+            attachGamesFrag()
+            return
+        }
+        super.onBackPressed()
     }
 }

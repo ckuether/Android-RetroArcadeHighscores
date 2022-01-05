@@ -27,9 +27,8 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
         binding = FragmentGamesBinding.bind(view)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
+    override fun onResume() {
+        super.onResume()
         if(gamesAdapter == null) {
             val db = FirebaseFirestore.getInstance()
             db.collection("games").orderBy("id").get().addOnSuccessListener {
@@ -38,13 +37,19 @@ class GamesFragment: Fragment(R.layout.fragment_games) {
                     val game = doc.toObject(Game::class.java)!!
                     games.add(game)
                 }
-                gamesAdapter = GamesRVAdapter(context, games)
-                binding.gamesRv.layoutManager = LinearLayoutManager(context)
-                binding.gamesRv.adapter = gamesAdapter
-                if(resources.getBoolean(R.bool.isTablet)) {
-                    (context as MainActivity).updateSelectedGame(games[0])
-                }
+                gamesAdapter = GamesRVAdapter(requireContext(), games)
+                updateViews()
             }
+        }else{
+            updateViews()
+        }
+    }
+
+    fun updateViews(){
+        binding.gamesRv.layoutManager = LinearLayoutManager(context)
+        binding.gamesRv.adapter = gamesAdapter
+        if(resources.getBoolean(R.bool.isTablet)) {
+            (context as MainActivity).updateSelectedGame(games[0])
         }
     }
 }
